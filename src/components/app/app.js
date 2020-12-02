@@ -42,7 +42,7 @@ export default class App extends React.Component {
     };
     this.myId = `task-${Math.random()}`;
     this.addItem = this.addItem.bind(this);
-    this.onToggleCompleted = this.onToggleCompleted.bind(this);
+    this.onCompleteHandler = this.onCompleteHandler.bind(this);
   }
 
   addItem(title, body) {
@@ -59,7 +59,7 @@ export default class App extends React.Component {
       };
     });
   }
-  onToggleCompleted(id) {
+  onCompleteHandler(id) {
     this.setState(({ tasks }) => {
       const index = tasks.findIndex((elem) => {
         return elem._id === id;
@@ -77,13 +77,32 @@ export default class App extends React.Component {
       };
     });
   }
+  onDeleteHandler = (id) => {
+    this.setState(({tasks}) => {
+      const index = tasks.findIndex(elem => elem._id === id);
+      //Возвращаем новый массив в который копируем элементы с первого до индекса и элементы со следующего индекса( после текущего)
+      const newData = [
+          ...tasks.slice(0, index),
+          ...tasks.slice(index + 1)
+      ]
+      return {
+        tasks: newData,
+      }
+    });
+
+
+  }
 
   render() {
     const { tasks } = this.state;
     return (
       <div className="main-container mt-5">
         <AppHeader onAdd={this.addItem} />
-        <ListSection tasks={tasks} onToggleCompleted={this.onToggleCompleted} />
+        <ListSection
+            tasks={tasks}
+            onCompleteHandler={this.onCompleteHandler}
+            onDeleteHandler={this.onDeleteHandler}
+        />
       </div>
     );
   }

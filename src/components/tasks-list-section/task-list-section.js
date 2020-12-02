@@ -2,20 +2,21 @@ import React from "react";
 import TaskTemplate from "../tasks-template/task-template";
 import ButtonContainer from "../tasks-template/button-container";
 
-const ListSection = ({ tasks, onToggleCompleted }) => {
+const ListSection = ({ tasks, onCompleteHandler, onDeleteHandler}) => {
   const elements = tasks.map((item) => {
     const { _id, title, body, completed } = item;
 
     return (
       <li
         key={_id}
-        className="list-group-item d-flex align-items-center justyfy-content-between flex-wrap mt-2"
+        className="list-group-item d-flex align-items-center justify-content-between flex-wrap mt-2"
       >
         <TaskTemplate
           title={title}
           body={body}
           completed={completed}
-          onToggleCompleted={() => onToggleCompleted(_id)}
+          onCompleteHandler={() => onCompleteHandler(_id)}
+          deleteHandler={() => onDeleteHandler(_id)}
         />
       </li>
     );
