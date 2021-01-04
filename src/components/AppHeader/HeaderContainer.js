@@ -7,25 +7,29 @@ export default class HeaderContainer extends React.Component {
       title: "",
       body: "",
     };
-    this.onAddTitle = this.onAddTitle.bind(this);
-    this.onAddBody = this.onAddBody.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+
   }
-  onAddTitle({ target }) {
+  onAddTitle = ({ target }) => {
     this.setState({
       title: target.value,
     });
   }
-  onAddBody({ target }) {
+  onAddBody = ({ target }) =>{
     this.setState({
       body: target.value,
     });
   }
-  onSubmit(e) {
+  onSubmit = (e) =>{
     e.preventDefault();
     const title = this.state.title;
     const body = this.state.body;
+    const form = e.target
     this.props.onAdd(title, body);
+    form.reset() //Нужна для того, чтобы
+    // очистить нашу форму, после
+    // сабмита(отправки данных). Работает
+    // только на формах. Форму сначала надо
+    // инициализировать
   }
   render() {
     return (

@@ -1,0 +1,33 @@
+li .todo-title {
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+li .todo-body {
+
+}
+div .list-container {
+    margin: 0 auto;
+}
+
+.list-group-item {
+    width: 50%;
+    height: auto;
+}
+.button-container {
+    justify-content: center;
+}
+
+.button-container .notCompleted {
+    margin: 0 8% 0 8%;
+}
+
+.complete-class {
+    color: black;
+    background: #aaffa9;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #11ffbd, #aaffa9);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11ffbd, #aaffa9);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

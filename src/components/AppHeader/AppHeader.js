@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderContainer from "./header-container";
+import HeaderContainer from "./HeaderContainer";
 
 const AppHeader = (props) => {
   const { onAdd } = props;
